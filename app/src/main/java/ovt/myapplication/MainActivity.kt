@@ -3,24 +3,22 @@ package ovt.myapplication
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.TextView
-
+import component
 import kotlinx.android.synthetic.main.activity_main.*
-import ovt.myapplication.dao.TopicDao
+import ovt.myapplication.dao.impl.PostDaoMem
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+
+    @Inject lateinit var postDaoMem: PostDaoMem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+        component.inject(this)
 
-        val topics = TopicDao.getTrending(applicationContext)
-
-        findViewById<TextView>(R.id.label).setText(topics.toString())
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

@@ -1,8 +1,10 @@
+import android.app.Activity
+import android.content.res.Resources
 import org.json.JSONArray
 import org.json.JSONObject
+import ovt.myapplication.App
+import ovt.myapplication.AppComponent
 
-val API = "https://api.producthunt.com/v1"
-val accessToken = "591f99547f569b05ba7d8777e2e0824eea16c440292cce1f8dfb3952cc9937ff"
 
 fun <T> JSONArray.map(f: (JSONObject) -> T): List<T> {
     val result = mutableListOf<T>()
@@ -11,3 +13,14 @@ fun <T> JSONArray.map(f: (JSONObject) -> T): List<T> {
     }
     return result
 }
+
+fun loadJson(id: Int): JSONObject {
+    val file = Resources.getSystem().openRawResource(id)
+    val bytes = ByteArray(file.available())
+    file.read(bytes)
+    val str = String(bytes)
+    return JSONObject(str)
+}
+
+val Activity.component: AppComponent
+    get() = (application as App).appComponent

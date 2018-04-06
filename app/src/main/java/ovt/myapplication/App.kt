@@ -7,6 +7,10 @@ import android.app.Application
  */
 class App: Application() {
 
-    val appComponent = DaggerAppComponent.create()
+    val appComponent: AppComponent by lazy {
+        DaggerAppComponent.builder()
+                .appModule(AppModule(applicationContext))
+                .build()
+    }
 
 }

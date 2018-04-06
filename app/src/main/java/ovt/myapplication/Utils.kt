@@ -1,5 +1,4 @@
 import android.app.Activity
-import android.content.res.Resources
 import org.json.JSONArray
 import org.json.JSONObject
 import ovt.myapplication.App
@@ -13,14 +12,6 @@ fun <T> JSONArray.map(f: (JSONObject) -> T): List<T> {
         result.add(f.invoke(this.getJSONObject(i)))
     }
     return result
-}
-
-fun loadJson(id: Int): JSONObject {
-    val file = Resources.getSystem().openRawResource(id)
-    val bytes = ByteArray(file.available())
-    file.read(bytes)
-    val str = String(bytes)
-    return JSONObject(str)
 }
 
 val Activity.component: AppComponent

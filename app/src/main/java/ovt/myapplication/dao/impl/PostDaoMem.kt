@@ -1,6 +1,6 @@
 package ovt.myapplication.dao.impl
 
-import loadJson
+import android.content.Context
 import map
 import org.json.JSONObject
 import ovt.myapplication.R
@@ -11,14 +11,18 @@ import javax.inject.Inject
 /**
  * Created by nikolay on 06/04/2018.
  */
-class PostDaoMem @Inject constructor(): PostDao {
+class PostDaoMem @Inject constructor(private val ctx: Context): PostDao {
 
     override fun getByTopic(topic: String): List<Post> {
         return parse(requestByTopic(topic))
     }
 
     private fun requestByTopic(topic: String): JSONObject {
-        return loadJson(R.raw.sample_tech_posts)
+        val file = ctx.resources.openRawResource(R.raw.sample_tech_posts)
+        val bytes = ByteArray(file.available())
+        file.read(bytes)
+        val str = String(bytes)
+        return JSONObject(str)
     }
 
     private fun parse(obj: JSONObject): List<Post> {

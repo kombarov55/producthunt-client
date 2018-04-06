@@ -1,0 +1,112 @@
+{
+   "topics" : [
+      {
+         "name" : "Touch Bar Apps",
+         "image" : "https://ph-files.imgix.net/c74c96b5-94a5-4fce-8b39-9ec0e094d7ac?auto=format",
+         "slug" : "touch-bar-apps",
+         "created_at" : "2016-11-07T06:33:29.567-08:00",
+         "trending" : true,
+         "id" : 356,
+         "description" : "Apps built for Apple's new Touch Bar 👇",
+         "posts_count" : 177,
+         "updated_at" : "2018-04-06T01:36:20.592-07:00",
+         "followers_count" : 32106
+      },
+      {
+         "image" : "https://ph-files.imgix.net/65334d10-36be-4e72-81a2-61b9799c1760?auto=format",
+         "slug" : "books",
+         "name" : "Books",
+         "followers_count" : 68607,
+         "updated_at" : "2018-04-06T01:46:48.241-07:00",
+         "posts_count" : 7077,
+         "description" : "There’s just nothing like a good book. Expand your knowledge or just kick back with a great adventure.",
+         "trending" : true,
+         "id" : 354,
+         "created_at" : "2016-10-10T05:22:28.838-07:00"
+      },
+      {
+         "posts_count" : 8244,
+         "updated_at" : "2018-04-06T01:47:40.223-07:00",
+         "followers_count" : 52165,
+         "created_at" : "2016-10-10T05:21:53.411-07:00",
+         "id" : 353,
+         "trending" : true,
+         "description" : "Find something new and exciting to play at home or on the go. Work can wait. Have some fun.",
+         "image" : "https://ph-files.imgix.net/13464a83-6701-4257-b810-c4c84979e3fc?auto=format",
+         "slug" : "games",
+         "name" : "Games"
+      },
+      {
+         "followers_count" : 153093,
+         "updated_at" : "2018-04-06T01:47:28.876-07:00",
+         "posts_count" : 88215,
+         "trending" : true,
+         "description" : "Hardware or software. Invention or innovation. If someone’s pushing technology forward, you’ll find it here.",
+         "id" : 352,
+         "created_at" : "2016-10-10T05:21:16.546-07:00",
+         "image" : "https://ph-files.imgix.net/701fd26a-c028-48ec-a7e8-bf0f89d48e03?auto=format",
+         "slug" : "tech",
+         "name" : "Tech"
+      },
+      {
+         "created_at" : "2016-03-08T04:19:52.980-08:00",
+         "trending" : true,
+         "description" : "A.I. helps save us time and scale personalized services like shopping like never before. But watch out, the robots are getting smarter.",
+         "id" : 268,
+         "posts_count" : 2874,
+         "updated_at" : "2018-04-06T01:47:23.859-07:00",
+         "followers_count" : 163676,
+         "name" : "Artificial Intelligence",
+         "slug" : "artificial-intelligence",
+         "image" : "https://ph-files.imgix.net/0418cd04-f440-4021-8cf9-56be06164b0d?auto=format"
+      },
+      {
+         "image" : "https://ph-files.imgix.net/bcfb0ae5-5ebf-4557-93ff-2684a4530c17?auto=format",
+         "slug" : "developer-tools",
+         "name" : "Developer Tools",
+         "followers_count" : 201561,
+         "updated_at" : "2018-04-06T01:46:34.271-07:00",
+         "posts_count" : 8935,
+         "description" : "Writing code is hard. So we make software to help us write software. Whether it's a new text editor or little command line app. Dev tools are here to make your life as a developer even easier.",
+         "trending" : true,
+         "id" : 267,
+         "created_at" : "2016-03-08T04:19:52.954-08:00"
+      },
+      {
+         "trending" : true,
+         "description" : "From dog collars to wrist watches, there's wearable technology for everything. It's now easier than ever to measure the progress of your New Years resolutions (or lack thereof). 😁",
+         "id" : 261,
+         "created_at" : "2016-03-08T04:19:52.797-08:00",
+         "updated_at" : "2018-04-06T01:47:34.145-07:00",
+         "followers_count" : 116839,
+         "posts_count" : 1625,
+         "name" : "Wearables",
+         "slug" : "wearables",
+         "image" : "https://ph-files.imgix.net/ac2d297c-6bed-4652-815a-342c6f3ee094?auto=format"
+      },
+      {
+         "trending" : true,
+         "id" : 73,
+         "description" : "Live in the future with the latest in connected devices, furniture built for comfort, and robots. Yes, robots.",
+         "created_at" : "2016-03-08T04:19:48.147-08:00",
+         "updated_at" : "2018-04-06T01:47:37.848-07:00",
+         "followers_count" : 110638,
+         "posts_count" : 2327,
+         "name" : "Home",
+         "image" : "https://ph-files.imgix.net/54f8ccb5-b3c8-419f-b7a5-1972cbbc145b?auto=format",
+         "slug" : "home"
+      },
+      {
+         "name" : "Productivity",
+         "image" : "https://ph-files.imgix.net/5e906c86-5776-4ef0-9841-2b76dea8e255?auto=format",
+         "slug" : "productivity",
+         "created_at" : "2016-03-08T04:19:47.439-08:00",
+         "trending" : true,
+         "id" : 46,
+         "description" : "If time is most precious, this collection of lifehacks is so so precious. Be more productive and optimize your life.",
+         "posts_count" : 14896,
+         "followers_count" : 269260,
+         "updated_at" : "2018-04-06T01:47:23.032-07:00"
+      }
+   ]
+}

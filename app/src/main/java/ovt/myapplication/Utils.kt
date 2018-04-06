@@ -5,6 +5,7 @@ import org.json.JSONObject
 import ovt.myapplication.App
 import ovt.myapplication.AppComponent
 
+val API: String = "https://api.producthunt.com/v1"
 
 fun <T> JSONArray.map(f: (JSONObject) -> T): List<T> {
     val result = mutableListOf<T>()

@@ -11,13 +11,7 @@ import javax.inject.Inject
 /**
  * Created by nikolay on 06/04/2018.
  */
-class PostDaoMem @Inject constructor() : PostDao {
-
-    @Inject
-    lateinit var API: String
-
-//    @Inject
-//    lateinit var accessToken: String
+class PostDaoMem @Inject constructor(): PostDao {
 
     override fun getByTopic(topic: String): List<Post> {
         return parse(requestByTopic(topic))

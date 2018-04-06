@@ -4,14 +4,16 @@ import loadJson
 import map
 import org.json.JSONObject
 import ovt.myapplication.R
+import ovt.myapplication.dao.TopicDao
 import ovt.myapplication.model.Topic
+import javax.inject.Inject
 
 /**
  * Created by nikolay on 06/04/2018.
  */
-class TopicDaoMem {
+class TopicDaoMem @Inject constructor(): TopicDao {
 
-    fun getTrending(): List<Topic> {
+    override fun getTrendingTopics(): List<Topic> {
         return parse(requestTrendingTopics())
     }
 

@@ -7,12 +7,14 @@ import android.view.Menu
 import android.view.MenuItem
 import component
 import kotlinx.android.synthetic.main.activity_main.*
-import ovt.myapplication.dao.impl.PostDaoMem
+import ovt.myapplication.dao.PostDao
+import ovt.myapplication.dao.TopicDao
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    @Inject lateinit var postDaoMem: PostDaoMem
+    @Inject lateinit var postDao: PostDao
+    @Inject lateinit var topicDao: TopicDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

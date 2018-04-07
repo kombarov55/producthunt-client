@@ -1,10 +1,12 @@
 package ovt.myapplication.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import component
 import kotlinx.android.synthetic.main.activity_main.*
 import ovt.myapplication.R
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.main_menu_toolbar))
         component.inject(this)
 
         val posts = postDao.getByTopic("")
@@ -28,6 +31,10 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
+        }
+
+        findViewById<TextView>(R.id.label).setOnClickListener {
+            startActivity(Intent(this@MainActivity, PostSelectionActivity::class.java))
         }
     }
 

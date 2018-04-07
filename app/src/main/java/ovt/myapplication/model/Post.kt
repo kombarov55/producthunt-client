@@ -10,7 +10,8 @@ data class Post(
         val description: String,
         val upvoteCount: Int,
         val thumbnailSrc: String,
-        val redirectUrl: String
+        val redirectUrl: String,
+        val screenshotSrc: String
 ) {
 
     constructor(obj: JSONObject) : this(
@@ -18,7 +19,8 @@ data class Post(
             description = obj.getString("tagline"),
             upvoteCount = obj.getInt("votes_count"),
             thumbnailSrc = obj.getJSONObject("thumbnail").getString("image_url"),
-            redirectUrl = obj.getString("redirect_url")
+            redirectUrl = obj.getString("redirect_url"),
+            screenshotSrc = obj.getJSONObject("screenshot_url").getString("850px")
     )
 
 }

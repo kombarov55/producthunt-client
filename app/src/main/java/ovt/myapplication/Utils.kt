@@ -2,7 +2,7 @@ import android.app.Activity
 import org.json.JSONArray
 import org.json.JSONObject
 import ovt.myapplication.App
-import ovt.myapplication.AppComponent
+import ovt.myapplication.config.AppComponent
 
 val API: String = "https://api.producthunt.com/v1"
 

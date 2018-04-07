@@ -1,4 +1,4 @@
-package ovt.myapplication
+package ovt.myapplication.activity
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import component
 import kotlinx.android.synthetic.main.activity_main.*
+import ovt.myapplication.R
 import ovt.myapplication.dao.PostDao
 import ovt.myapplication.dao.TopicDao
 import javax.inject.Inject

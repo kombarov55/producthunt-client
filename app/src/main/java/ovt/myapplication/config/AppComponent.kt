@@ -1,7 +1,8 @@
-package ovt.myapplication
+package ovt.myapplication.config
 
 import dagger.Component
-import ovt.myapplication.dao.impl.PostDaoMem
+import ovt.myapplication.activity.MainActivity
+import ovt.myapplication.activity.PostSelectionActivity
 import javax.inject.Singleton
 
 /**
@@ -12,5 +13,6 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(activity: MainActivity)
+    fun inject(activity: PostSelectionActivity)
 
 }

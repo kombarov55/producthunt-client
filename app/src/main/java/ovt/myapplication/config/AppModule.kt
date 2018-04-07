@@ -1,4 +1,4 @@
-package ovt.myapplication
+package ovt.myapplication.config
 
 import android.content.Context
 import dagger.Binds

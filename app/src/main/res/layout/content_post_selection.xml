@@ -8,11 +8,15 @@
     tools:context="ovt.myapplication.activity.PostSelectionActivity"
     tools:showIn="@layout/activity_post_selection">
 
-    <ListView
-        android:id="@+id/postList"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
-
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/postList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -14,9 +14,10 @@ import ovt.myapplication.model.Post
  * Created by nikolay on 07/04/2018.
  */
 class PostAdapter(
-        private val posts: List<Post>,
+        var posts: List<Post>,
         private val inflater: LayoutInflater
 ): BaseAdapter() {
+
 
     override fun getView(i: Int, view: View?, parent: ViewGroup?): View {
         val v = view ?: inflater.inflate(R.layout.post_list_layout, parent, false)

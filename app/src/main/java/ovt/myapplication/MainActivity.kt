@@ -1,4 +1,4 @@
-package ovt.myapplication.activity
+package ovt.myapplication
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.widget.TextView
 import component
 import kotlinx.android.synthetic.main.activity_main.*
-import ovt.myapplication.R
 import ovt.myapplication.dao.PostDao
 import ovt.myapplication.dao.TopicDao
 import javax.inject.Inject

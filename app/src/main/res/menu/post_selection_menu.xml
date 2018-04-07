@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:local="http://schemas.android.com/tools">
 
-    <item
-        android:id="@+id/postCategory"
-        android:title = "Tech(WHANT)"
-        android:orderInCategory="1"
-        app:showAsAction="always"/>
+    <!--<item-->
+        <!--android:id="@+id/postCategorySelection"-->
+        <!--android:title = "Tech(WHANT)"-->
+        <!--android:orderInCategory="1"-->
+        <!--app:showAsAction="always"-->
+        <!--app:actionViewClass="android.widget.Spinner"-->
+        <!--local:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+        <!--local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>-->
 
 </menu>

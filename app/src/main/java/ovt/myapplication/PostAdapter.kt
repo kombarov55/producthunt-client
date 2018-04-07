@@ -1,4 +1,4 @@
-package ovt.myapplication.activity
+package ovt.myapplication
 
 import android.view.LayoutInflater
 import android.view.View

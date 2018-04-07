@@ -1,31 +1,34 @@
-package ovt.myapplication.activity
+package ovt.myapplication
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.widget.ListView
+import android.widget.Spinner
 import component
 import kotlinx.android.synthetic.main.activity_post_selection.*
-import ovt.myapplication.R
 import ovt.myapplication.dao.PostDao
+import ovt.myapplication.dao.TopicDao
 import java.util.*
 import javax.inject.Inject
 
 class PostSelectionActivity : AppCompatActivity() {
 
     @Inject lateinit var postDao: PostDao
+    @Inject lateinit var topicDao: TopicDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_selection)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         component.inject(this)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar?.title = ""
 
 
+        val spinner = findViewById<Spinner>(R.id.topicSelection)
+        spinner.setAdapter(TopicAdapter(topicDao.getTrendingTopics(), layoutInflater))
 
         val posts = postDao.getByTopic("Tech")
         val adapter = PostAdapter(posts, layoutInflater)

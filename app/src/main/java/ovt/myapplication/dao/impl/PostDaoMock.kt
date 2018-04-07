@@ -11,7 +11,7 @@ import javax.inject.Inject
 /**
  * Created by nikolay on 06/04/2018.
  */
-class PostDaoMem @Inject constructor(private val ctx: Context): PostDao {
+class PostDaoMock @Inject constructor(private val ctx: Context): PostDao {
 
     override fun getByTopic(topic: String): List<Post> {
         return parse(requestByTopic(topic))

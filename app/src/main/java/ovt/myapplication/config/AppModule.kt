@@ -1,13 +1,12 @@
 package ovt.myapplication.config
 
 import android.content.Context
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import ovt.myapplication.dao.PostDao
 import ovt.myapplication.dao.TopicDao
-import ovt.myapplication.dao.impl.PostDaoMem
-import ovt.myapplication.dao.impl.TopicDaoMem
+import ovt.myapplication.dao.impl.PostDaoMock
+import ovt.myapplication.dao.impl.TopicDaoMock
 import javax.inject.Singleton
 
 /**
@@ -22,12 +21,12 @@ class AppModule(private val ctx: Context) {
     @Provides
     @Singleton
     fun postDao(ctx: Context): PostDao {
-        return PostDaoMem(ctx)
+        return PostDaoMock(ctx)
     }
 
     @Provides @Singleton
     fun topicDao(ctx: Context): TopicDao {
-        return TopicDaoMem(ctx)
+        return TopicDaoMock(ctx)
     }
 
 //    @Provides

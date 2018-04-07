@@ -11,7 +11,7 @@ import javax.inject.Inject
 /**
  * Created by nikolay on 06/04/2018.
  */
-class TopicDaoMem @Inject constructor(private val ctx: Context): TopicDao {
+class TopicDaoMock @Inject constructor(private val ctx: Context): TopicDao {
 
     override fun getTrendingTopics(): List<Topic> {
         return parse(requestTrendingTopics())

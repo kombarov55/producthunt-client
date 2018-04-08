@@ -37,12 +37,13 @@ class PostSelectionActivity : AppCompatActivity() {
 
         val spinner = findViewById<Spinner>(R.id.topicSelection)
         spinner.setAdapter(TopicAdapter(topics, layoutInflater))
-        spinner.onItemSelectedListener = OnItemSelectedListenerAdapter(
+        val onItemSelectedListenerAdapter = OnItemSelectedListenerAdapter(
                 onItemSelectedCallback = { _, _, i, _ ->
                     selectedTopic = topics[i]
                     refreshPosts()
                 }
         )
+        spinner.onItemSelectedListener = onItemSelectedListenerAdapter
 
         selectedTopic = topics.first()
 

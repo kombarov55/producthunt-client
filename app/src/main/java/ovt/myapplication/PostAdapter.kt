@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import circleTransform
 import com.squareup.picasso.Picasso
 import ovt.myapplication.R
 import ovt.myapplication.model.Post
@@ -28,7 +29,12 @@ class PostAdapter(
         v.findViewById<TextView>(R.id.likes).setText(post.upvoteCount.toString())
         v.findViewById<TextView>(R.id.description).setText(post.description)
 
-        Picasso.get().load(post.thumbnailSrc).placeholder(R.drawable.upvote).into(v.findViewById<ImageView>(R.id.thumbnail))
+        Picasso
+                .get()
+                .load(post.thumbnailSrc)
+                .placeholder(R.drawable.upvote)
+                .transform(circleTransform)
+                .into(v.findViewById<ImageView>(R.id.thumbnail))
 
         return v
     }

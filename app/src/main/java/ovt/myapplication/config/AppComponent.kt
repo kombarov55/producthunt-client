@@ -1,7 +1,6 @@
 package ovt.myapplication.config
 
 import dagger.Component
-import ovt.myapplication.MainActivity
 import ovt.myapplication.PostSelectionActivity
 import javax.inject.Singleton
 
@@ -12,7 +11,6 @@ import javax.inject.Singleton
 @Singleton @Component(modules = [ AppModule::class ])
 interface AppComponent {
 
-    fun inject(activity: MainActivity)
     fun inject(activity: PostSelectionActivity)
 
 }

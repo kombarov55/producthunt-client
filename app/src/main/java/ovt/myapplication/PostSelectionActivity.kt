@@ -53,6 +53,7 @@ class PostSelectionActivity : AppCompatActivity() {
         val listview = findViewById<ListView>(R.id.postList)
         listview.setAdapter(postAdapter)
 
+
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout)
         swipeRefreshLayout.setOnRefreshListener {
             refreshPosts()

@@ -16,6 +16,16 @@
             android:name=".PostSelectionActivity"
             android:label="@string/title_activity_post_selection"
             android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".PostViewActivity"
+            android:label="@string/title_activity_post_view"
+            android:parentActivityName=".PostSelectionActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ovt.myapplication.PostSelectionActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

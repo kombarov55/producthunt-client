@@ -11,13 +11,20 @@ import component
 import kotlinx.android.synthetic.main.activity_post_selection.*
 import ovt.myapplication.dao.PostDao
 import ovt.myapplication.dao.TopicDao
+import ovt.myapplication.model.Topic
 import java.util.*
 import javax.inject.Inject
+
+import OnItemSelectedListenerAdapter
 
 class PostSelectionActivity : AppCompatActivity() {
 
     @Inject lateinit var postDao: PostDao
     @Inject lateinit var topicDao: TopicDao
+
+    lateinit var topics: List<Topic>
+    lateinit var selectedTopic: Topic
+    lateinit var postAdapter: PostAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,29 +33,28 @@ class PostSelectionActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.title = ""
 
+        topics = topicDao.getTrendingTopics()
 
         val spinner = findViewById<Spinner>(R.id.topicSelection)
-        spinner.setAdapter(TopicAdapter(topicDao.getTrendingTopics(), layoutInflater))
+        spinner.setAdapter(TopicAdapter(topics, layoutInflater))
+        spinner.onItemSelectedListener = OnItemSelectedListenerAdapter(
+                onItemSelectedCallback = { _, _, i, _ ->
+                    selectedTopic = topics[i]
+                    refreshPosts()
+                }
+        )
 
-        val topics = topicDao.getTrendingTopics()
+        selectedTopic = topics.first()
+
         val posts = postDao.getByTopic(topics.first().name)
 
-        val adapter = PostAdapter(posts, layoutInflater)
+        postAdapter = PostAdapter(posts, layoutInflater)
         val listview = findViewById<ListView>(R.id.postList)
-        listview.setAdapter(adapter)
+        listview.setAdapter(postAdapter)
 
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout)
         swipeRefreshLayout.setOnRefreshListener {
-            //TODO: заглшука, далее заменить
-            val newPosts = Random().let { r ->
-                posts
-                        .map { it to r.nextInt(posts.size) }
-                        .sortedBy { it.second }
-                        .map { it.first }
-            }
-
-            adapter.posts = newPosts
-            adapter.notifyDataSetChanged()
+            refreshPosts()
             swipeRefreshLayout.isRefreshing = false
         }
 
@@ -63,5 +69,10 @@ class PostSelectionActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.post_selection_menu, menu)
 
         return true
+    }
+
+    private fun refreshPosts() {
+        postAdapter.posts = postDao.getByTopic(selectedTopic.name)
+        postAdapter.notifyDataSetChanged()
     }
 }

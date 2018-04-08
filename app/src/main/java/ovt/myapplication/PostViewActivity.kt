@@ -11,6 +11,7 @@ class PostViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_view)
         setSupportActionBar(toolbar)
+        supportActionBar?.title = "sample tech post"
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()

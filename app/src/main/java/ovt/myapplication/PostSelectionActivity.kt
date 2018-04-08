@@ -16,6 +16,10 @@ import java.util.*
 import javax.inject.Inject
 
 import OnItemSelectedListenerAdapter
+import android.content.Intent
+import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 
 class PostSelectionActivity : AppCompatActivity() {
 
@@ -52,7 +56,9 @@ class PostSelectionActivity : AppCompatActivity() {
         postAdapter = PostAdapter(posts, layoutInflater)
         val listview = findViewById<ListView>(R.id.postList)
         listview.setAdapter(postAdapter)
-
+        listview.setOnItemClickListener { parent: AdapterView<*>?, item: View?, i: Int, id: Long ->
+            startActivity(Intent(this@PostSelectionActivity, PostViewActivity::class.java))
+        }
 
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout)
         swipeRefreshLayout.setOnRefreshListener {

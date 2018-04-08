@@ -6,6 +6,8 @@ import org.json.JSONObject
 import ovt.myapplication.R
 import ovt.myapplication.dao.PostDao
 import ovt.myapplication.model.Post
+import readToString
+import spaceDelimitedtoSnakeCase
 import javax.inject.Inject
 
 /**
@@ -18,10 +20,8 @@ class PostDaoMock @Inject constructor(private val ctx: Context): PostDao {
     }
 
     private fun requestByTopic(topic: String): JSONObject {
-        val file = ctx.resources.openRawResource(R.raw.sample_tech_posts)
-        val bytes = ByteArray(file.available())
-        file.read(bytes)
-        val str = String(bytes)
+        val topicId = nameToResourceId[topic]!!
+        val str = ctx.resources.openRawResource(topicId).readToString()
         return JSONObject(str)
     }
 
@@ -30,5 +30,17 @@ class PostDaoMock @Inject constructor(private val ctx: Context): PostDao {
                 .getJSONArray("posts")
                 .map { jsonObject -> Post(jsonObject) }
     }
+
+    private val nameToResourceId = mapOf(
+            "Touch Bar Apps" to R.raw.sample_touch_bar_apps_posts,
+            "Books" to R.raw.sample_books_posts,
+            "Games" to R.raw.sample_games_posts,
+            "Tech" to R.raw.sample_tech_posts,
+            "Artificial Intelligence" to R.raw.sample_artificial_intelligence_posts,
+            "Developer Tools" to R.raw.sample_developer_tools_posts,
+            "Wearables" to R.raw.sample_wearables_posts,
+            "Home" to R.raw.sample_home_posts,
+            "Productivity" to R.raw.sample_productivity_posts
+    )
 
 }

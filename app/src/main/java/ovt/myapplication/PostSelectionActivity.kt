@@ -30,7 +30,9 @@ class PostSelectionActivity : AppCompatActivity() {
         val spinner = findViewById<Spinner>(R.id.topicSelection)
         spinner.setAdapter(TopicAdapter(topicDao.getTrendingTopics(), layoutInflater))
 
-        val posts = postDao.getByTopic("Tech")
+        val topics = topicDao.getTrendingTopics()
+        val posts = postDao.getByTopic(topics.first().name)
+
         val adapter = PostAdapter(posts, layoutInflater)
         val listview = findViewById<ListView>(R.id.postList)
         listview.setAdapter(adapter)

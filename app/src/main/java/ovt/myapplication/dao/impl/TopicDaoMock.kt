@@ -6,6 +6,7 @@ import org.json.JSONObject
 import ovt.myapplication.R
 import ovt.myapplication.dao.TopicDao
 import ovt.myapplication.model.Topic
+import readToString
 import javax.inject.Inject
 
 /**
@@ -18,10 +19,7 @@ class TopicDaoMock @Inject constructor(private val ctx: Context): TopicDao {
     }
 
     private fun requestTrendingTopics(): JSONObject {
-        val file = ctx.resources.openRawResource(R.raw.sample_trending_topics)
-        val bytes = ByteArray(file.available())
-        file.read(bytes)
-        val str = String(bytes)
+        val str = ctx.resources.openRawResource(R.raw.sample_trending_topics).readToString()
         return JSONObject(str)
     }
 

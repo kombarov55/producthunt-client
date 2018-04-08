@@ -9,23 +9,14 @@ import android.view.MenuItem
 import android.widget.TextView
 import component
 import kotlinx.android.synthetic.main.activity_main.*
-import ovt.myapplication.dao.PostDao
-import ovt.myapplication.dao.TopicDao
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-
-    @Inject lateinit var postDao: PostDao
-    @Inject lateinit var topicDao: TopicDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.main_menu_toolbar))
         component.inject(this)
-
-        val posts = postDao.getByTopic("")
-        val topics = topicDao.getTrendingTopics()
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

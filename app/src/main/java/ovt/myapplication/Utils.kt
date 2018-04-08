@@ -5,6 +5,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import ovt.myapplication.App
 import ovt.myapplication.config.AppComponent
+import java.io.InputStream
 
 val API: String = "https://api.producthunt.com/v1"
 
@@ -31,4 +32,17 @@ class OnItemSelectedListenerAdapter(
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, i: Int, id: Long) {
         onItemSelectedCallback?.invoke(parent, view, i, id)
     }
+}
+
+fun spaceDelimitedtoSnakeCase(s: String): String =
+        s.map { c ->
+            if (c == ' ')
+                '_' else
+                c
+        }.joinToString("")
+
+fun InputStream.readToString(): String {
+    val bytes = ByteArray(available())
+    read(bytes)
+    return String(bytes)
 }

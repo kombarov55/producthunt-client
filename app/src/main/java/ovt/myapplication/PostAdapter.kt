@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import circleTransform
 import com.squareup.picasso.Picasso
-import ovt.myapplication.R
 import ovt.myapplication.model.Post
 
 /**
@@ -27,7 +26,7 @@ class PostAdapter(
 
         v.findViewById<TextView>(R.id.name).setText(post.name)
         v.findViewById<TextView>(R.id.likes).setText(post.upvoteCount.toString())
-        v.findViewById<TextView>(R.id.description).setText(post.description)
+        v.findViewById<TextView>(R.id.postDescripton).setText(post.description)
 
         Picasso
                 .get()

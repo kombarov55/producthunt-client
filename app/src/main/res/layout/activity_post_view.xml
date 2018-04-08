@@ -24,6 +24,7 @@
             app:toolbarId="@+id/toolbar">
 
             <ImageView
+                android:id="@+id/postScreenshot"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/sample_post_screenshot"

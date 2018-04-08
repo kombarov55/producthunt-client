@@ -20,6 +20,7 @@ import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import ovt.myapplication.model.Post
 
 class PostSelectionActivity : AppCompatActivity() {
 
@@ -57,7 +58,9 @@ class PostSelectionActivity : AppCompatActivity() {
         val listview = findViewById<ListView>(R.id.postList)
         listview.setAdapter(postAdapter)
         listview.setOnItemClickListener { parent: AdapterView<*>?, item: View?, i: Int, id: Long ->
-            startActivity(Intent(this@PostSelectionActivity, PostViewActivity::class.java))
+            val intent = Intent(this@PostSelectionActivity, PostViewActivity::class.java)
+            intent.putExtra(Post.EXTRA_NAME, posts[i])
+            startActivity(intent)
         }
 
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout)

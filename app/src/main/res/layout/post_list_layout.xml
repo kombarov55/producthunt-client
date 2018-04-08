@@ -44,7 +44,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textStyle="bold"/>
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/postDescripton"
         android:layout_width="0dp"
         android:singleLine="true"
         android:layout_height="wrap_content"

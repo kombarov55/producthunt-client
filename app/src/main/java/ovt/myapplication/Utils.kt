@@ -14,6 +14,7 @@ import android.opengl.ETC1.getWidth
 
 
 val API: String = "https://api.producthunt.com/v1"
+val accessToken: String = "591f99547f569b05ba7d8777e2e0824eea16c440292cce1f8dfb3952cc9937ff"
 
 fun <T> JSONArray.map(f: (JSONObject) -> T): List<T> {
     val result = mutableListOf<T>()

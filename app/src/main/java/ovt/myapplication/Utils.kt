@@ -1,16 +1,14 @@
 import android.app.Activity
 import android.graphics.*
 import android.view.View
-import android.view.animation.Transformation
 import android.widget.AdapterView
+import android.widget.ListView
 import org.json.JSONArray
 import org.json.JSONObject
 import ovt.myapplication.App
 import ovt.myapplication.config.AppComponent
 import java.io.InputStream
-import android.opengl.ETC1.getHeight
-import android.opengl.ETC1.getWidth
-
+import android.widget.Spinner
 
 
 val API: String = "https://api.producthunt.com/v1"
@@ -26,20 +24,6 @@ fun <T> JSONArray.map(f: (JSONObject) -> T): List<T> {
 
 val Activity.component: AppComponent
     get() = (application as App).appComponent
-
-class OnItemSelectedListenerAdapter(
-        private val onItemSelectedCallback: ((AdapterView<*>?, View?, Int, Long) -> Unit)? = null,
-        private val onNothingSelectedCallback: ((AdapterView<*>?) -> Unit)? = null
-): AdapterView.OnItemSelectedListener {
-
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-        onNothingSelectedCallback?.invoke(parent)
-    }
-
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, i: Int, id: Long) {
-        onItemSelectedCallback?.invoke(parent, view, i, id)
-    }
-}
 
 fun spaceDelimitedtoSnakeCase(s: String): String =
         s.map { c ->
@@ -83,5 +67,23 @@ val circleTransform = object : com.squareup.picasso.Transformation {
 
         squaredBitmap.recycle()
         return bitmap
+    }
+}
+
+fun Spinner.setOnItemSelectedListener(f: (Int) -> Unit) {
+    onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+        override fun onNothingSelected(p0: AdapterView<*>?) { }
+
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, i: Int, id: Long) {
+            f.invoke(i)
+        }
+    }
+}
+
+fun ListView.setOnItemClickListener(f: (Int) -> Unit) {
+    onItemClickListener = object : AdapterView.OnItemClickListener {
+        override fun onItemClick(parent: AdapterView<*>?, view: View?, i: Int, id: Long) {
+            f.invoke(i)
+        }
     }
 }

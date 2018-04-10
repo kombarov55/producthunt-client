@@ -11,8 +11,10 @@ interface PostSelectionView {
 
     fun displayTopics(topics: List<Topic>)
     fun displayPosts(posts: List<Post>)
+    fun endPullDownProgress()
 
     val topicClicked: Observable<Int>
     val postClicked: Observable<Int>
+    val pulledDownToRefresh: Observable<Unit?>
 
 }

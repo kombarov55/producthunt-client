@@ -26,12 +26,15 @@ class PostSelectionActivity : AppCompatActivity(), PostSelectionView {
 
     override val topicClicked: Observable<Int> get() = topicClickedSubject
     override val postClicked: Observable<Int> get() = postClickedSubject
+    override val pulledDownToRefresh: Observable<Unit?> get() = pulledDownToRefreshSubject
 
     private val topicClickedSubject = PublishSubject.create<Int>()
     private val postClickedSubject = PublishSubject.create<Int>()
+    private val pulledDownToRefreshSubject = PublishSubject.create<Unit?>()
 
     private lateinit var spinner: Spinner
     private lateinit var postListView: ListView
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +49,8 @@ class PostSelectionActivity : AppCompatActivity(), PostSelectionView {
         postListView = findViewById(R.id.postList)
 
 
-        val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout)
-        swipeRefreshLayout.setOnRefreshListener {
-            swipeRefreshLayout.isRefreshing = false
-        }
+        swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout)
+        swipeRefreshLayout.setOnRefreshListener { pulledDownToRefreshSubject.onNext(null) }
 
         presenter.onCreate()
     }
@@ -62,6 +63,10 @@ class PostSelectionActivity : AppCompatActivity(), PostSelectionView {
     override fun displayPosts(posts: List<Post>) {
         postListView.adapter = PostAdapter(posts, layoutInflater)
         postListView.setOnItemClickListener { i -> postClickedSubject.onNext(i) }
+    }
+
+    override fun endPullDownProgress() {
+        swipeRefreshLayout.isRefreshing = false
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

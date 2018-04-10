@@ -29,8 +29,18 @@ class PostSelectionPresenter constructor (
 
         postSelectionView.topicClicked
                 .map { i -> topics[i]}
+                .doOnNext { topic -> selectedTopic = topic }
                 .map {topic -> postDao.getByTopic(topic.name) }
                 .subscribe { posts -> postSelectionView.displayPosts(posts) }
+
+        postSelectionView.pulledDownToRefresh
+                .map { postDao.getByTopic(selectedTopic.name) }
+                .subscribe { posts ->
+                    postSelectionView.displayPosts(posts)
+                    postSelectionView.endPullDownProgress()
+                }
+
+
     }
 
 }

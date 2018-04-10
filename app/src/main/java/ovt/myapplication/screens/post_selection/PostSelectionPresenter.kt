@@ -1,5 +1,6 @@
 package ovt.myapplication.screens.post_selection
 
+import android.os.Bundle
 import ovt.myapplication.dao.PostDao
 import ovt.myapplication.dao.TopicDao
 import ovt.myapplication.model.Post
@@ -49,7 +50,13 @@ class PostSelectionPresenter constructor (
                     postSelectionView.endPullDownProgress()
                 }
 
-
+        postSelectionView.postClicked
+                .map { i -> posts[i] }
+                .subscribe { post ->
+                    val extra = Bundle()
+                    extra.putParcelable(Post.EXTRA_NAME, post)
+                    postSelectionView.goToPostViewActivity(extra)
+                }
 
     }
 

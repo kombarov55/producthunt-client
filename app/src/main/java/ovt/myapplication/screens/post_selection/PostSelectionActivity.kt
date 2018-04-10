@@ -1,5 +1,6 @@
 package ovt.myapplication.screens.post_selection
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
@@ -7,6 +8,7 @@ import android.view.Menu
 import android.widget.ListView
 import android.widget.Spinner
 import component
+import ovt.myapplication.PostViewActivity
 import ovt.myapplication.R
 import ovt.myapplication.dao.PostDao
 import ovt.myapplication.dao.TopicDao
@@ -49,7 +51,7 @@ class PostSelectionActivity : AppCompatActivity(), PostSelectionView {
         postListView = findViewById(R.id.postList)
 
 
-        swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout)
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
         swipeRefreshLayout.setOnRefreshListener { pulledDownToRefreshSubject.onNext(null) }
 
         presenter.onCreate()
@@ -67,6 +69,12 @@ class PostSelectionActivity : AppCompatActivity(), PostSelectionView {
 
     override fun endPullDownProgress() {
         swipeRefreshLayout.isRefreshing = false
+    }
+
+    override fun goToPostViewActivity(extra: Bundle) {
+        val intent = Intent(this, PostViewActivity::class.java)
+        intent.putExtras(extra)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

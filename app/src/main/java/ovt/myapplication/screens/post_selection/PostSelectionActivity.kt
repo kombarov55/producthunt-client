@@ -48,8 +48,10 @@ class PostSelectionActivity : AppCompatActivity(), PostSelectionView {
         val presenter = PostSelectionPresenter(this, postDao, topicDao)
 
         spinner = findViewById(R.id.topicSelection)
-        postListView = findViewById(R.id.postList)
+        spinner.setOnItemSelectedListener { i -> topicClickedSubject.onNext(i) }
 
+        postListView = findViewById(R.id.postList)
+        postListView.setOnItemClickListener { i -> postClickedSubject.onNext(i) }
 
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
         swipeRefreshLayout.setOnRefreshListener { pulledDownToRefreshSubject.onNext(null) }
@@ -59,12 +61,10 @@ class PostSelectionActivity : AppCompatActivity(), PostSelectionView {
 
     override fun displayTopics(topics: List<Topic>) {
         spinner.adapter = TopicAdapter(topics, layoutInflater)
-        spinner.setOnItemSelectedListener { i -> topicClickedSubject.onNext(i) }
     }
 
     override fun displayPosts(posts: List<Post>) {
         postListView.adapter = PostAdapter(posts, layoutInflater)
-        postListView.setOnItemClickListener { i -> postClickedSubject.onNext(i) }
     }
 
     override fun endPullDownProgress() {

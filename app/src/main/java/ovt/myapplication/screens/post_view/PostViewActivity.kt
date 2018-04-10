@@ -1,5 +1,7 @@
 package ovt.myapplication.screens.post_view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -17,9 +19,6 @@ class PostViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_post_view)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-
-        }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val post = intent.getParcelableExtra<Post>(Post.EXTRA_NAME)
@@ -27,5 +26,10 @@ class PostViewActivity : AppCompatActivity() {
         supportActionBar?.title = post.name
         Picasso.get().load(post.screenshotSrc).into(findViewById<ImageView>(R.id.postScreenshot))
         findViewById<TextView>(R.id.postDescripton).setText(post.description)
+        findViewById<TextView>(R.id.upvoteCount).setText(post.upvoteCount.toString())
+
+        fab.setOnClickListener { _ ->
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(post.redirectUrl)))
+        }
     }
 }

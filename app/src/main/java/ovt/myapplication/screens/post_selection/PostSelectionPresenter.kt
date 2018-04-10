@@ -32,10 +32,11 @@ class PostSelectionPresenter constructor (
 
         postSelectionView.topicClicked
                 .map { i -> topics[i]}
+
                 .doOnNext { topic -> selectedTopic = topic }
 
                 .observeOn(Schedulers.io())
-                .map {topic -> postDao.getByTopic(topic.name) }
+                .map { topic -> postDao.getByTopic(topic.name) }
 
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { posts -> postSelectionView.displayPosts(posts) }

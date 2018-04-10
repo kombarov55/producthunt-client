@@ -1,4 +1,4 @@
-package ovt.myapplication
+package ovt.myapplication.screens.post_view
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_post_view.*
+import ovt.myapplication.R
 import ovt.myapplication.model.Post
 
 class PostViewActivity : AppCompatActivity() {
@@ -17,12 +18,12 @@ class PostViewActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val post = intent.getParcelableExtra<Post>(Post.EXTRA_NAME)
+
         supportActionBar?.title = post.name
         Picasso.get().load(post.screenshotSrc).into(findViewById<ImageView>(R.id.postScreenshot))
         findViewById<TextView>(R.id.postDescripton).setText(post.description)

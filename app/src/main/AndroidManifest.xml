@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PostViewActivity"
+            android:name=".screens.post_view.PostViewActivity"
             android:label="@string/title_activity_post_view"
             android:parentActivityName=".screens.post_selection.PostSelectionActivity"
             android:theme="@style/AppTheme.NoActionBar">

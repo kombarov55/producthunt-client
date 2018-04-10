@@ -22,12 +22,13 @@ class PostDaoImpl @Inject constructor(
         val page = 1
         val perPage = 10
 
-        return JSONObject(httpClient
-                .newCall(Request.Builder()
+        return JSONObject(
+                httpClient.newCall(Request.Builder()
                         .url("$API/posts/all?search[$topic]=1&page=$page&per_page=$perPage&access_token=$accessToken")
                         .build())
-                .execute()
-                .toString()).getJSONArray("posts").map { jsonObject -> Post(jsonObject) }
+                        .execute().toString())
+                .getJSONArray("posts")
+                .map { jsonObject -> Post(jsonObject) }
 
 
     }

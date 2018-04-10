@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="ovt.myapplication.PostViewActivity">
+    tools:context="ovt.myapplication.screens.post_view.PostViewActivity">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

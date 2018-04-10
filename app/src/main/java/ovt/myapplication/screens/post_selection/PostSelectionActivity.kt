@@ -8,7 +8,7 @@ import android.view.Menu
 import android.widget.ListView
 import android.widget.Spinner
 import component
-import ovt.myapplication.PostViewActivity
+import ovt.myapplication.screens.post_view.PostViewActivity
 import ovt.myapplication.R
 import ovt.myapplication.dao.PostDao
 import ovt.myapplication.dao.TopicDao

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="ovt.myapplication.PostViewActivity"
+    tools:context="ovt.myapplication.screens.post_view.PostViewActivity"
     tools:showIn="@layout/activity_post_view">
 
     <TextView

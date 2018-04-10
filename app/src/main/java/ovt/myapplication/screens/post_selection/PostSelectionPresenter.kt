@@ -4,6 +4,8 @@ import ovt.myapplication.dao.PostDao
 import ovt.myapplication.dao.TopicDao
 import ovt.myapplication.model.Post
 import ovt.myapplication.model.Topic
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 
 /**
  * Created by nikolay on 10/04/2018.
@@ -30,15 +32,23 @@ class PostSelectionPresenter constructor (
         postSelectionView.topicClicked
                 .map { i -> topics[i]}
                 .doOnNext { topic -> selectedTopic = topic }
+
+                .observeOn(Schedulers.io())
                 .map {topic -> postDao.getByTopic(topic.name) }
+
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { posts -> postSelectionView.displayPosts(posts) }
 
         postSelectionView.pulledDownToRefresh
+                .observeOn(Schedulers.io())
                 .map { postDao.getByTopic(selectedTopic.name) }
+
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { posts ->
                     postSelectionView.displayPosts(posts)
                     postSelectionView.endPullDownProgress()
                 }
+
 
 
     }

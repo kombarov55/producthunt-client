@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".PostSelectionActivity"
+            android:name=".screens.post_selection.PostSelectionActivity"
             android:label="@string/title_activity_post_selection"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -24,11 +24,11 @@
         <activity
             android:name=".PostViewActivity"
             android:label="@string/title_activity_post_view"
-            android:parentActivityName=".PostSelectionActivity"
+            android:parentActivityName=".screens.post_selection.PostSelectionActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ovt.myapplication.PostSelectionActivity" />
+                android:value="ovt.myapplication.screens.post_selection.PostSelectionActivity" />
         </activity>
     </application>
 

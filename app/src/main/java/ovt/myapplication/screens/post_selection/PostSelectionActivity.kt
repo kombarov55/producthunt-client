@@ -1,4 +1,4 @@
-package ovt.myapplication
+package ovt.myapplication.screens.post_selection
 
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
@@ -7,6 +7,7 @@ import android.view.Menu
 import android.widget.ListView
 import android.widget.Spinner
 import component
+import ovt.myapplication.R
 import ovt.myapplication.dao.PostDao
 import ovt.myapplication.dao.TopicDao
 import ovt.myapplication.model.Post
@@ -23,27 +24,14 @@ class PostSelectionActivity : AppCompatActivity(), PostSelectionView {
     @Inject lateinit var postDao: PostDao
     @Inject lateinit var topicDao: TopicDao
 
-    override fun displayTopics(topics: List<Topic>) {
-        topicAdapter.topics = topics
-        topicAdapter.notifyDataSetChanged()
-    }
+    override val topicClicked: Observable<Int> get() = topicClickedSubject
+    override val postClicked: Observable<Int> get() = postClickedSubject
 
-    override fun displayPosts(posts: List<Post>) {
-        val adapter = PostAdapter(posts, layoutInflater)
-        postListView.setAdapter(adapter)
-    }
-
-    override val topicClicked: Observable<Topic> get() = topicClickedSubject
-    override val postClicked: Observable<Post> get() = postClickedSubject
-
-    private val topicClickedSubject = PublishSubject.create<Topic>()
-    private val postClickedSubject = PublishSubject.create<Post>()
+    private val topicClickedSubject = PublishSubject.create<Int>()
+    private val postClickedSubject = PublishSubject.create<Int>()
 
     private lateinit var spinner: Spinner
     private lateinit var postListView: ListView
-
-    private lateinit var topicAdapter: TopicAdapter
-    private lateinit var postAdapter: PostAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,21 +40,28 @@ class PostSelectionActivity : AppCompatActivity(), PostSelectionView {
         supportActionBar?.title = ""
 
         component.inject(this)
-
+        val presenter = PostSelectionPresenter(this, postDao, topicDao)
 
         spinner = findViewById(R.id.topicSelection)
-        spinner.setOnItemSelectedListener { i -> topicClickedSubject.onNext(topicAdapter.topics[i]) }
-
-        topicAdapter = TopicAdapter(emptyList(), layoutInflater)
-        postAdapter = PostAdapter(emptyList(), layoutInflater)
-
         postListView = findViewById(R.id.postList)
-        postListView.setOnItemClickListener { i -> postClickedSubject.onNext(postAdapter.posts[i]) }
+
 
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout)
         swipeRefreshLayout.setOnRefreshListener {
             swipeRefreshLayout.isRefreshing = false
         }
+
+        presenter.onCreate()
+    }
+
+    override fun displayTopics(topics: List<Topic>) {
+        spinner.adapter = TopicAdapter(topics, layoutInflater)
+        spinner.setOnItemSelectedListener { i -> topicClickedSubject.onNext(i) }
+    }
+
+    override fun displayPosts(posts: List<Post>) {
+        postListView.adapter = PostAdapter(posts, layoutInflater)
+        postListView.setOnItemClickListener { i -> postClickedSubject.onNext(i) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

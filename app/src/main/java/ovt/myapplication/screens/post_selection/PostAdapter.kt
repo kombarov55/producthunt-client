@@ -1,4 +1,4 @@
-package ovt.myapplication
+package ovt.myapplication.screens.post_selection
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import circleTransform
 import com.squareup.picasso.Picasso
+import ovt.myapplication.R
 import ovt.myapplication.model.Post
 
 /**

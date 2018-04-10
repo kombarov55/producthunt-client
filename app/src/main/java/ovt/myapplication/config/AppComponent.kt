@@ -1,7 +1,7 @@
 package ovt.myapplication.config
 
 import dagger.Component
-import ovt.myapplication.PostSelectionActivity
+import ovt.myapplication.screens.post_selection.PostSelectionActivity
 import javax.inject.Singleton
 
 /**

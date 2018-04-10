@@ -1,18 +1,17 @@
-package ovt.myapplication
+package ovt.myapplication.screens.post_selection
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
 import android.widget.TextView
-import com.squareup.picasso.Picasso
+import ovt.myapplication.R
 import ovt.myapplication.model.Topic
 
 /**
  * Created by nikolay on 07/04/2018.
  */
-class TopicAdapter(var topics: List<Topic>,
+class TopicAdapter(val topics: List<Topic>,
                    val inflater: LayoutInflater): BaseAdapter() {
 
 

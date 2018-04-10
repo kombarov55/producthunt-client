@@ -1,4 +1,4 @@
-package ovt.myapplication
+package ovt.myapplication.screens.post_selection
 
 import ovt.myapplication.model.Post
 import ovt.myapplication.model.Topic
@@ -12,7 +12,7 @@ interface PostSelectionView {
     fun displayTopics(topics: List<Topic>)
     fun displayPosts(posts: List<Post>)
 
-    val topicClicked: Observable<Topic>
-    val postClicked: Observable<Post>
+    val topicClicked: Observable<Int>
+    val postClicked: Observable<Int>
 
 }
